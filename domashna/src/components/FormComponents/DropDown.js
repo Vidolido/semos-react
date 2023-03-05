@@ -1,4 +1,4 @@
-const Dropdown = ({ options, onDropDownChange }) => {
+const Dropdown = ({ options, onDropDownChange }) => { // ја ископирав оваа компонента од часот и направив мала модификација
     return (
       <div>
         <label>Choose an app:</label>

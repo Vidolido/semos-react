@@ -4,14 +4,18 @@ import FieldInput from "./FieldInput";
 import ShowLoggedUsers from "./ShowLoggedUsers";
 
 const MainComponent = () => {
-    const [loggedUsers, setLoggedUsers] = useState([]);
+    const [loggedUsers, setLoggedUsers] = useState([]); // празна низа која подоцна ќе ја пополнам со низа од User објекти
+
+
     const initialObj = {
         user: "",
         pass: "",
         comment: "",
         app: ""
-    }
-    const [userObj, setUserObj] = useState(initialObj);
+    } // иницијален објект кој ќе го користам како шема за полињата
+
+
+    const [userObj, setUserObj] = useState(initialObj); // објект кој се пополнува со полињата од формата
 
     const apps = [
         { id: 1, name: "Facebook" },
@@ -21,16 +25,15 @@ const MainComponent = () => {
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
-        setLoggedUsers([...loggedUsers, userObj]);
-        setUserObj(initialObj);
-    };
+        setLoggedUsers([...loggedUsers, userObj]); // додава нов User објект во низата од објекти
+        setUserObj(initialObj); // ги празни полињата во објектот и истовремено ја брише содржината на input полињата на формата
+    }; // функција која ја обработува формата
 
     const onDropDownChange = (e) => {
         setUserObj(prevState => {
             return {...prevState, [e.target.name] : e.target.value}
         });
-    };
-    console.log(loggedUsers)
+    }; // го додава изборот од dropwdown менито
     return (
         <>
             <form onSubmit={handleOnSubmit}>
